@@ -9,6 +9,7 @@ class Paddle:
         self._color = Back.RED
         self._reset = Back.BLACK
         self.grab = True
+        self.delta = 2
 
 
     def show(self,my_board):
@@ -29,13 +30,13 @@ class Paddle:
     
     def change_position(self,direction):
         if(direction == 'left'):
-            if(self.col > 2):
-                self.col = self.col - 1
+            if(self.col - self.delta>1 ):
+                self.col = self.col - self.delta
             else:
                 return False
         if(direction == 'right'):
             if(self.col + self._len < COL - 2):
-                self.col = self.col + 1
+                self.col = self.col + self.delta
             else:
                 return False
         

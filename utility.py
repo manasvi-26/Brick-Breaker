@@ -52,7 +52,7 @@ def take_input():
 
         #move ball if paddle has grabbed onto it
         if(can_move == True and on_paddle == True):
-            my_ball.set_position(my_ball.row ,my_ball.col -1,my_board)
+            my_ball.set_position(my_ball.row ,my_ball.col -my_paddle.delta,my_board)
             
             
     
@@ -63,7 +63,7 @@ def take_input():
 
         #move ball if paddle has grabbed onto it
         if(can_move == True and on_paddle == True):
-            my_ball.set_position(my_ball.row ,my_ball.col +1,my_board)
+            my_ball.set_position(my_ball.row ,my_ball.col +my_paddle.delta,my_board)
             
 
 
