@@ -1,4 +1,5 @@
 from utility import *
+from config import *
 
 os.system('clear')
 my_board.print_board()
@@ -12,6 +13,6 @@ while True :
     my_board.print_board()
     
     if(my_ball.on_paddle == False):
-        my_ball.move(my_board,my_paddle,my_bricks)
+        my_ball.move()
 
 os.system("stty -echo")

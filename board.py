@@ -1,4 +1,5 @@
 from headers import *
+import config
 
 class Board:
 

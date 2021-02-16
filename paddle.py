@@ -1,9 +1,10 @@
 from headers import *
+import config
 
 class Paddle:
 
-    def __init__(self,PADDLE_LEN):
-        self._len = PADDLE_LEN
+    def __init__(self):
+        self._len = config.PADDLE_LEN
         self.row = PADDLE_HT
         self.col = int((COL - 1 - self._len)/2)
         self._color = Back.RED
@@ -12,19 +13,19 @@ class Paddle:
         self.delta = 2
 
 
-    def show(self,my_board):
+    def show(self):
 
         for i in range(self._len):
-            my_board.grid[self.row][self.col + i] = self._color + PADDLE
-            my_board.hidden_grid[self.row][self.col + i] = 'P'
+            config.my_board.grid[self.row][self.col + i] = self._color + PADDLE
+            config.my_board.hidden_grid[self.row][self.col + i] = 'P'
 
 
             
-    def clear(self,my_board):
+    def clear(self):
 
         for i in range(self._len):
-            my_board.grid[self.row][self.col + i] =  self._reset
-            my_board.hidden_grid[self.row][self.col + i] =  ' '
+            config.my_board.grid[self.row][self.col + i] =  self._reset
+            config.my_board.hidden_grid[self.row][self.col + i] =  ' '
 
             
     
@@ -45,16 +46,16 @@ class Paddle:
     def grab_func(self):
         self.grab = not self.grab
 
-    def move(self,direction,my_board):
+    def move(self,direction):
 
         #Clear the Paddle
-        self.clear(my_board)
+        self.clear()
 
         #Change Position
         val = self.change_position(direction)
 
         #Show the Paddle
-        self.show(my_board)
+        self.show()
         
         return val
 

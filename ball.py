@@ -1,11 +1,11 @@
 from headers import *
-
+import config
 
 class Ball:
 
-    def __init__(self,PADDLE_LEN):
+    def __init__(self):
         self.row = PADDLE_HT - 1
-        self.col = int((COL - 1 - PADDLE_LEN)/2 + math.floor(PADDLE_LEN/2))
+        self.col = int((COL - 1 - config.PADDLE_LEN)/2 + math.floor(config.PADDLE_LEN/2))
 
         self.vel_horz = 0
         self.vel_vert = 1
@@ -15,20 +15,20 @@ class Ball:
 
         self.on_paddle = True
 
-    def show(self,my_board):
-        my_board.grid[self.row][self.col] = self._color + BALL
+    def show(self):
+        config.my_board.grid[self.row][self.col] = self._color + BALL
 
-    def clear(self,my_board):
-        my_board.grid[self.row][self.col] = self._reset
+    def clear(self):
+        config.my_board.grid[self.row][self.col] = self._reset
     
 
-    def set_position(self,new_row,new_col,my_board):
-        self.clear(my_board)
+    def set_position(self,new_row,new_col):
+        self.clear()
 
         self.row = new_row
         self.col = new_col
 
-        self.show(my_board)
+        self.show()
         
     
     def set_velocity(self,new_velHor,new_velVert):
@@ -85,9 +85,9 @@ class Ball:
                 l.append((row,col))
         return l
     
-    def collide_brick(self,row,col,my_bricks,my_board,direction):
+    def collide_brick(self,row,col,direction):
         
-        for brick in my_bricks:
+        for brick in config.my_bricks:
             if(brick.show_mode == False):
                 continue
             
@@ -98,7 +98,7 @@ class Ball:
 
             if(cond1 and cond2 and cond3 and cond4):
                 if(brick.strength != -1):
-                    brick.break_brick(my_board)
+                    brick.break_brick()
                 if(direction == 'horz'):
                     self.set_velocity(-1* self.vel_horz, self.vel_vert)
                 elif(direction == 'vert' ):
@@ -107,7 +107,7 @@ class Ball:
                 return
 
             
-    def collide_wall(self,row,col,my_board,dir):
+    def collide_wall(self,row,col,dir):
 
         #Check if ball hits ground
         if row == ROW - 1:
@@ -122,33 +122,33 @@ class Ball:
 
 
 
-    def collide_paddle(self,row,col,my_paddle,my_board):
+    def collide_paddle(self,row,col):
         
-        dist = my_paddle.col + int(my_paddle._len/2) -  col
+        dist = config.my_paddle.col + int(config.my_paddle._len/2) -  col
         dist = floor(dist/4)
         self.set_velocity((-1*dist+ self.vel_horz), -1*(self.vel_vert))
         
         return
 
-    def check_collision(self,row,col,my_board,my_paddle,my_bricks,direction):
+    def check_collision(self,row,col,direction):
 
         #CHECK IF COLLIDED WITH BRICK
-        if(my_board.hidden_grid[row][col] == 'B'):
-            self.collide_brick(row,col,my_bricks,my_board,direction)
+        if(config.my_board.hidden_grid[row][col] == 'B'):
+            self.collide_brick(row,col,direction)
             return True
         #CHECK IF COLLIDED WITH WALL
-        elif (my_board.hidden_grid[row][col] == 'W'):
-            self.collide_wall(row,col,my_board,direction)
+        elif (config.my_board.hidden_grid[row][col] == 'W'):
+            self.collide_wall(row,col,direction)
             return True
         #CHECK IF COLLIDED WITH PADDLE
-        elif (my_board.hidden_grid[row][col] == 'P'):
-            self.collide_paddle(row,col,my_paddle,my_board)
+        elif (config.my_board.hidden_grid[row][col] == 'P'):
+            self.collide_paddle(row,col)
             return True
         
         return False
 
 
-    def move(self,my_board,my_paddle,my_bricks):
+    def move(self):
 
         print(self.vel_horz,self.vel_vert)
         path = self.simulate_path()
@@ -167,18 +167,18 @@ class Ball:
         #CHECK COLLISION FOR EVERY PIXEL IN THE PATH
         for pixel in path:
             new_row,new_col = pixel[0],pixel[1]
-            val = self.check_collision(new_row+dir_row,new_col,my_board,my_paddle,my_bricks,'vert')
+            val = self.check_collision(new_row+dir_row,new_col,'vert')
             if val == True:
-                self.set_position(new_row,new_col,my_board)
+                self.set_position(new_row,new_col)
                 
                 return 
-            val = self.check_collision(new_row,new_col + dir_col,my_board,my_paddle,my_bricks,'horz')
+            val = self.check_collision(new_row,new_col + dir_col,'horz')
             if val == True:
-                self.set_position(new_row,new_col,my_board)
+                self.set_position(new_row,new_col)
                 return
 
         
-        self.set_position(end_row,end_col,my_board)
+        self.set_position(end_row,end_col)
 
 
 
