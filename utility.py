@@ -5,6 +5,12 @@ from board import *
 from paddle import *
 from bricks import *
 from ball import *
+from powerUp import *
+
+
+#REPOSITION CURSOR TO (0,0)
+def reposition_cursor(x,y):
+    print("\033[%d;%dH" % (x, y))
 
 #CREATE BOARD
 my_board = Board()
@@ -29,10 +35,6 @@ for coord in LAYOUT:
 for brick in my_bricks:
     brick.show(my_board)
 
-
-#REPOSITION CURSOR TO (0,0)
-def reposition_cursor(x,y):
-    print("\033[%d;%dH" % (x, y))
 
 
 #TAKING INPUT
@@ -74,7 +76,6 @@ def take_input():
             my_paddle.grab_func()
             my_ball.release()
             my_ball.move(my_board,my_paddle,my_bricks)
-
 
 
 

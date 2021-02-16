@@ -7,7 +7,7 @@ class Paddle:
         self.row = PADDLE_HT
         self.col = int((COL - 1 - self._len)/2)
         self._color = Back.RED
-        self._reset = Back.BLACK
+        self._reset = Back.BLACK + ' ' + Back.RESET
         self.grab = True
         self.delta = 2
 
@@ -23,7 +23,7 @@ class Paddle:
     def clear(self,my_board):
 
         for i in range(self._len):
-            my_board.grid[self.row][self.col + i] =  self._reset  + ' '
+            my_board.grid[self.row][self.col + i] =  self._reset
             my_board.hidden_grid[self.row][self.col + i] =  ' '
 
             

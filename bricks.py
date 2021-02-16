@@ -9,7 +9,7 @@ class Brick:
         self.pick_brick()
         self.show_mode = True
 
-        self._reset = Back.BLACK
+        self._reset = Back.BLACK + ' ' + Back.RESET
     
     def pick_brick(self):
 
@@ -43,11 +43,9 @@ class Brick:
         for i in range(BRICK_WIDTH):
             for j in range(BRICK_LENGTH):
                 
-                my_board.grid[self.row + i][self.col+j] = self._reset + ' ' 
+                my_board.grid[self.row + i][self.col+j] = self._reset
                 
                 my_board.hidden_grid[self.row + i][self.col+j] = ' ' 
-
-       
 
     def break_brick(self,my_board):
 

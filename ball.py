@@ -1,5 +1,6 @@
 from headers import *
 
+
 class Ball:
 
     def __init__(self,PADDLE_LEN):
@@ -10,7 +11,7 @@ class Ball:
         self.vel_vert = 1
 
         self._color = Fore.CYAN
-        self._reset = Back.BLACK
+        self._reset = Back.BLACK + ' ' + Back.RESET
 
         self.on_paddle = True
 
@@ -18,7 +19,7 @@ class Ball:
         my_board.grid[self.row][self.col] = self._color + BALL
 
     def clear(self,my_board):
-        my_board.grid[self.row][self.col] = self._reset + ' '
+        my_board.grid[self.row][self.col] = self._reset
     
 
     def set_position(self,new_row,new_col,my_board):
