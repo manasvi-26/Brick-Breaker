@@ -33,3 +33,8 @@ for coord in LAYOUT:
 
 for brick in my_bricks:
     brick.show()
+
+
+
+#DEFINE POWERUP
+my_powerups = []
