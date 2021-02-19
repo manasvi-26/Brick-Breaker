@@ -9,7 +9,7 @@ class Paddle:
         self.col = int((COL - 1 - self._len)/2)
         self._color = Back.RED
         self._reset = Back.BLACK + ' ' + Back.RESET
-        self.grab = True
+        self.grab = 0
         self.delta = 2
 
 
@@ -43,8 +43,8 @@ class Paddle:
         
         return True
 
-    def grab_func(self):
-        self.grab = not self.grab
+    def grab_func(self,val):
+        self.grab = val
 
     def move(self,direction):
 

@@ -21,8 +21,8 @@ my_paddle = paddle.Paddle()
 my_paddle.show()
 
 #CREATE BALL
-my_ball = ball.Ball()
-my_ball.show()
+balls = [ball.Ball()]
+balls[0].show()
 
 
 #CREATE BRICKS

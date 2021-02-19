@@ -20,32 +20,34 @@ def take_input():
     #MOVE PADDLE LEFT
     if ch == 'a':
         can_move = config.my_paddle.move('left')
-        on_paddle = config.my_ball.on_paddle
 
-        #move ball if paddle has grabbed onto it
-        if(can_move == True and on_paddle == True):
-            config.my_ball.set_position(config.my_ball.row ,config.my_ball.col -config.my_paddle.delta)
+        for my_ball in config.balls:
+            on_paddle = my_ball.on_paddle
+
+            #move ball if paddle has grabbed onto it
+            if(can_move == True and on_paddle == True):
+                my_ball.set_position(my_ball.row ,my_ball.col -config.my_paddle.delta)
             
             
     
     #MOVE PADDLE RIGHT
     if ch == 'd':
         can_move = config.my_paddle.move('right')
-        on_paddle = config.my_ball.on_paddle
-
-        #move ball if paddle has grabbed onto it
-        if(can_move == True and on_paddle == True):
-            config.my_ball.set_position(config.my_ball.row ,config.my_ball.col +config.my_paddle.delta)
+        
+        for my_ball in config.balls:
+            on_paddle = my_ball.on_paddle
+            #move ball if paddle has grabbed onto it
+            if(can_move == True and on_paddle == True):
+                my_ball.set_position(my_ball.row ,my_ball.col +config.my_paddle.delta)
             
 
 
     #ONLY WORKS IF PADDLE HAS GRABBED ONTO BALL
     if ch == 'r':
+        for my_ball in config.balls:
+            if(my_ball.on_paddle == True):
+                my_ball.release()
 
-        if(config.my_ball.on_paddle == True):
-            config.my_paddle.grab_func()
-            config.my_ball.release()
-            config.my_ball.move()
 
 
 
