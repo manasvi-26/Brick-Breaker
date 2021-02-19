@@ -9,6 +9,7 @@ from time import sleep,time
 from math import floor 
 import random
 import math
+from copy import deepcopy
 
 init()
 

@@ -153,7 +153,6 @@ class Ball:
 
     def move(self):
 
-        print(self.vel_horz,self.vel_vert)
         path = self.simulate_path()
         
         dir_row,dir_col = 0,0

@@ -53,7 +53,7 @@ def take_input():
 def create_powerup(row,col):
 
     val = random.choice([0,1,2,3,4,5])
-    val = 4
+    val = 0
     if val == 0:
         powerup = config.powerUp.Ball_Multiplier(row,col)
     

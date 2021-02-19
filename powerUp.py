@@ -155,6 +155,18 @@ class Ball_Multiplier(PowerUp):
     def __init__(self,row,col):
         super().__init__(row,col)
         self.shape = BALL_MULTIPLIER
+    
+    def activate(self):
+
+        self.start_time = time()
+        self.activated = True
+
+        tot = len(config.balls)
+        for i in range(tot):
+            new_ball = deepcopy(config.balls[i])
+            new_ball.set_velocity(config.balls[i].vel_horz,-1*config.balls[i].vel_vert)
+            config.balls.append(new_ball)
+
 
 class Thru_Ball(PowerUp):
     
