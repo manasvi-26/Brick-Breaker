@@ -120,6 +120,33 @@ class Shrink_Paddle(PowerUp):
         config.my_paddle.expand_paddle()
         self.activated = False
   
+class Fast_Ball(PowerUp):
+    
+    def __init__(self,row,col):
+        super().__init__(row,col)
+        self.shape = FAST_BALL
+    
+    def activate(self):
+        self.start_time = time()
+        self.activated = True
+        self.show_mode = False
+
+        for my_ball in config.balls:
+            v = abs(my_ball.vel_vert)
+            v += 1
+            if(my_ball.vel_vert < 0):
+                v = v * -1
+            my_ball.set_velocity(my_ball.vel_horz,v)
+
+    def deactivate(self):
+        self.activated = False
+        for my_ball in config.balls:
+            v = abs(my_ball.vel_vert)
+            v -= 1
+            if(my_ball.vel_vert < 0):
+                v = v * -1
+            my_ball.set_velocity(my_ball.vel_horz,v)
+
 
 
 
@@ -136,10 +163,6 @@ class Thru_Ball(PowerUp):
         self.shape = THRU_BALL
         
 
-class Fast_Ball(PowerUp):
-    
-    def __init__(self,row,col):
-        super().__init__(row,col)
-        self.shape = FAST_BALL
+
 
 
