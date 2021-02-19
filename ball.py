@@ -14,6 +14,7 @@ class Ball:
         self._reset = Back.BLACK + ' ' + Back.RESET
 
         self.on_paddle = True
+        self.thru_ball = 0
 
     def show(self):
         config.my_board.grid[self.row][self.col] = self._color + BALL
@@ -35,7 +36,9 @@ class Ball:
 
         self.vel_horz = new_velHor
         self.vel_vert = new_velVert
-        
+    
+    def set_thruBall(self,val):
+        self.thru_ball = val
         
 
     def release(self):
@@ -97,8 +100,11 @@ class Ball:
             cond4 = col < brick.col + BRICK_LENGTH
 
             if(cond1 and cond2 and cond3 and cond4):
+                if(self.thru_ball > 0):
+                    brick.break_brick(1)
+                    return
                 if(brick.strength != -1):
-                    brick.break_brick()
+                    brick.break_brick(0)
                 if(direction == 'horz'):
                     self.set_velocity(-1* self.vel_horz, self.vel_vert)
                 elif(direction == 'vert' ):
@@ -138,6 +144,8 @@ class Ball:
         #CHECK IF COLLIDED WITH BRICK
         if(config.my_board.hidden_grid[row][col] == 'B'):
             self.collide_brick(row,col,direction)
+            if(self.thru_ball > 0):
+                return False
             return True
         #CHECK IF COLLIDED WITH WALL
         elif (config.my_board.hidden_grid[row][col] == 'W'):

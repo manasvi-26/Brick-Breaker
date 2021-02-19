@@ -53,7 +53,6 @@ def take_input():
 def create_powerup(row,col):
 
     val = random.choice([0,1,2,3,4,5])
-    val = 0
     if val == 0:
         powerup = config.powerUp.Ball_Multiplier(row,col)
     
@@ -72,7 +71,6 @@ def create_powerup(row,col):
     if val == 5:
         powerup = config.powerUp.Paddle_Grab(row,col)
 
-    
 
     config.my_powerups.append(powerup)
 

@@ -173,7 +173,21 @@ class Thru_Ball(PowerUp):
     def __init__(self,row,col):
         super().__init__(row,col)
         self.shape = THRU_BALL
-        
+    
+    def activate(self):
+
+        self.start_time = time()
+        self.activated = True
+
+        for my_ball in config.balls:
+            my_ball.set_thruBall(my_ball.thru_ball + 1)
+    
+    def deactivate(self):
+        self.activated = False
+
+        for my_ball in config.balls:
+            my_ball.set_thruBall(my_ball.thru_ball - 1)
+
 
 
 
