@@ -50,7 +50,31 @@ def take_input():
 
 
 
+def create_powerup(row,col):
 
+    val = random.choice([0,1,2,3,4,5])
+    val = 5
+    if val == 0:
+        powerup = config.powerUp.Ball_Multiplier(row,col)
+    
+    if val == 1:
+        powerup = config.powerUp.Thru_Ball(row,col)
+
+    if val == 2:
+        powerup = config.powerUp.Expand_Paddle(row,col)
+    
+    if val == 3:
+        powerup = config.powerUp.Shrink_Paddle(row,col)
+    
+    if val == 4: 
+        powerup = config.powerUp.Fast_Ball(row,col)
+    
+    if val == 5:
+        powerup = config.powerUp.Paddle_Grab(row,col)
+
+    
+
+    config.my_powerups.append(powerup)
 
 
     

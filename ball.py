@@ -127,6 +127,9 @@ class Ball:
         dist = config.my_paddle.col + int(config.my_paddle._len/2) -  col
         dist = floor(dist/4)
         self.set_velocity((-1*dist+ self.vel_horz), -1*(self.vel_vert))
+
+        if(config.my_paddle.grab > 0):
+            self.on_paddle = True
         
         return
 

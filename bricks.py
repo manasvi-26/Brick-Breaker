@@ -1,5 +1,6 @@
 from headers import *
 import config
+import utility
 
 class Brick:
 
@@ -54,6 +55,9 @@ class Brick:
         if self.strength == 0:
             self.clear()
             self.show_mode = False
+            
+            utility.create_powerup(self.row,self.col+int(BRICK_LENGTH/2))
+
         if self.strength == 1:
             self.color = Back.YELLOW
             self.show()

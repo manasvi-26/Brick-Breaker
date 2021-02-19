@@ -5,7 +5,7 @@ import sys
 import termios
 import tty
 import signal
-from time import sleep
+from time import sleep,time
 from math import floor 
 import random
 import math
@@ -84,3 +84,5 @@ PADDLE_GRAB =Fore.LIGHTCYAN_EX + 'P' + Fore.RESET
 
 
 POWERUP_CNT = 20
+POWERUP_TIME = 5
+

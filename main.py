@@ -15,5 +15,21 @@ while True :
     for my_ball in balls:
         if(my_ball.on_paddle == False):
             my_ball.move()
+    
+    for powerup in my_powerups:
+
+        if powerup.delete == True:
+            my_powerups.remove(powerup)
+        
+        elif powerup.activated == True:
+            val = powerup.check_time()
+            if(val == True):
+                my_powerups.remove(powerup)
+                del powerup
+        else:
+            powerup.move()
+            
+
+
 
 os.system("stty -echo")
