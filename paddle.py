@@ -4,6 +4,7 @@ import config
 class Paddle:
 
     def __init__(self):
+
         self._len = config.PADDLE_LEN
         self.row = PADDLE_HT
         self.col = int((COL - 1 - self._len)/2)
@@ -45,6 +46,18 @@ class Paddle:
 
     def grab_func(self,val):
         self.grab = val
+    
+    def expand_paddle(self):
+        self.clear()
+        self._len = self._len + 4
+        self.show()
+    
+    def shrink_paddle(self):
+        
+        if(self._len > 7):
+            self.clear()
+            self._len = self._len - 4
+            self.show()
 
     def move(self,direction):
 

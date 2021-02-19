@@ -67,42 +67,6 @@ class PowerUp:
         if(self.show_mode == True):
             self.show()
 
-
-
-class Ball_Multiplier(PowerUp):
-
-    def __init__(self):
-        super().__init__()
-        self.shape = BALL_MULTIPLIER
-
-class Thru_Ball(PowerUp):
-    
-    def __init__(self):
-        super().__init__()
-        self.shape = THRU_BALL
-        
-    
-        
-class Expand_Paddle(PowerUp):
-    
-    def __init__(self):
-        super().__init__()
-        self.shape = EXPAND_PADDLE
-        
-
-class Shrink_Paddle(PowerUp):
-    def __init__(self):
-        super().__init__()
-        self.shape = SHRINK_PADDLE
-        
-
-class Fast_Ball(PowerUp):
-    
-    def __init__(self):
-        super().__init__()
-        self.shape = FAST_BALL
-
-
 class Paddle_Grab(PowerUp):
 
     def __init__(self,row,col):
@@ -122,3 +86,60 @@ class Paddle_Grab(PowerUp):
                 my_ball.on_paddle = False
         self.activated = False
         
+class Expand_Paddle(PowerUp):
+    
+    def __init__(self,row,col):
+        super().__init__(row,col)
+        self.shape = EXPAND_PADDLE
+
+    def activate(self):
+        self.start_time = time()
+        self.activated = True
+        self.show_mode = False
+        config.my_paddle.expand_paddle()
+
+    def deactivate(self):
+        config.my_paddle.shrink_paddle()
+        self.activated = False
+
+
+
+    
+class Shrink_Paddle(PowerUp):
+    def __init__(self,row,col):
+        super().__init__(row,col)
+        self.shape = SHRINK_PADDLE
+    
+    def activate(self):
+        self.start_time = time()
+        self.activated = True
+        self.show_mode = False
+        config.my_paddle.shrink_paddle()
+
+    def deactivate(self):
+        config.my_paddle.expand_paddle()
+        self.activated = False
+  
+
+
+
+class Ball_Multiplier(PowerUp):
+
+    def __init__(self,row,col):
+        super().__init__(row,col)
+        self.shape = BALL_MULTIPLIER
+
+class Thru_Ball(PowerUp):
+    
+    def __init__(self,row,col):
+        super().__init__(row,col)
+        self.shape = THRU_BALL
+        
+
+class Fast_Ball(PowerUp):
+    
+    def __init__(self,row,col):
+        super().__init__(row,col)
+        self.shape = FAST_BALL
+
+
