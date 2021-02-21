@@ -179,7 +179,7 @@ def game_over():
        
 
 def win():
-    print(Fore.BLACK + Back.LIGHTCYAN_EX + Style.BRIGHT +"YOU BEAT 100% OF ALL THE PLAYERS! GOOD JOB".center(COL)+Style.RESET_ALL)                 
+    print(Fore.BLACK + Back.LIGHTCYAN_EX + Style.BRIGHT +"YOU WON !!!GOOD JOB".center(COL)+Style.RESET_ALL)                 
     print()
 
 def Quit():
