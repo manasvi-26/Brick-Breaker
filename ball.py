@@ -5,19 +5,21 @@ class Ball:
 
     def __init__(self):
         self.row = PADDLE_HT - 1
-        self.col = int((COL - 1 - config.PADDLE_LEN)/2 + math.floor(config.PADDLE_LEN/2))
+        self.col = config.my_paddle.col + math.floor(config.PADDLE_LEN/2)
 
         self.vel_horz = 0
         self.vel_vert = 1
 
-        self._color = Fore.CYAN
         self._reset = Back.BLACK + ' ' + Back.RESET
 
         self.on_paddle = True
         self.thru_ball = 0
 
+        self.dead = False
+
+
     def show(self):
-        config.my_board.grid[self.row][self.col] = self._color + BALL
+        config.my_board.grid[self.row][self.col] = BALL
 
     def clear(self):
         config.my_board.grid[self.row][self.col] = self._reset
@@ -43,6 +45,7 @@ class Ball:
 
     def release(self):
         self.on_paddle = not self.on_paddle
+        
     
     def simulate_path(self):
 
@@ -116,10 +119,11 @@ class Ball:
     def collide_wall(self,row,col,dir):
 
         #Check if ball hits ground
-        if row == ROW - 1:
-            print('lol loser')
-            exit()
-        
+        if row >= PADDLE_HT:
+            self.dead = True
+            self.clear()
+            return
+
         if(dir == 'horz'):
             self.set_velocity(-1* self.vel_horz, self.vel_vert)
         elif(dir == 'vert' ):

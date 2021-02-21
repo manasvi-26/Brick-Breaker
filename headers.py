@@ -24,7 +24,7 @@ PADDLE_WD = 2
 PADDLE='.'
 
 #FOR BALL
-BALL = 'O'
+BALL = Back.BLACK + Fore.LIGHTCYAN_EX + 'O' + Fore.RESET + Back.RESET
 
 
 #FOR BRICKS
@@ -83,7 +83,9 @@ FAST_BALL = Back.LIGHTYELLOW_EX + Fore.BLACK + 'F' + Fore.RESET + Back.RESET
 THRU_BALL = Back.LIGHTBLUE_EX + Fore.BLACK + 'T' + Fore.RESET + Back.RESET
 PADDLE_GRAB =Back.LIGHTGREEN_EX + Fore.BLACK + 'P' + Fore.RESET + Back.RESET
 
+POWERUPS = [EXPAND_PADDLE,SHRINK_PADDLE,BALL_MULTIPLIER,FAST_BALL,THRU_BALL,PADDLE_GRAB]
+powerup_names = ['Expand Paddle','Shrink Paddle', 'Ball Multiplier', 'Fast Ball', 'Thru-ball', 'Paddle Grab']
 
-POWERUP_CNT = 20
-POWERUP_TIME = 5
+
+POWERUP_TIME = 10
 

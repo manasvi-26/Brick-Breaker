@@ -20,6 +20,7 @@ class Brick:
             self.color = Back.RED
             self.strength =  -1
         else:
+            config.BREAKABLE_BRICKS += 1
             self.color = random.choice(BACK_COLORS)
             
             if self.color == Back.YELLOW:
@@ -51,11 +52,11 @@ class Brick:
 
     def powerup_check(self):
         val = random.uniform(0,1)
-     
-        if(val < 0.2):
+        if(val < 0.7):
             utility.create_powerup(self.row,self.col+int(BRICK_LENGTH/2))
 
     def break_brick(self,type):
+        config.SCORE += 5
         if(type == 0):
             self.strength -= 1
             if self.strength == 0:

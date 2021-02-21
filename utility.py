@@ -3,8 +3,8 @@ from headers import *
 import config
 
 #REPOSITION CURSOR TO (0,0)
-def reposition_cursor(x,y):
-    print("\033[%d;%dH" % (x, y))
+def reposition_cursor(y,x):
+    print("\033[%d;%dH" % (y, x), end="")
 
 
 #TAKING INPUT
@@ -15,6 +15,7 @@ def take_input():
 
     if ch == 'q':
         print("AW you quit:(")
+        os.system("stty echo")
         exit()
 
     #MOVE PADDLE LEFT
@@ -53,6 +54,7 @@ def take_input():
 def create_powerup(row,col):
 
     val = random.choice([0,1,2,3,4,5])
+    val = 0
     if val == 0:
         powerup = config.powerUp.Ball_Multiplier(row,col)
     
@@ -71,12 +73,113 @@ def create_powerup(row,col):
     if val == 5:
         powerup = config.powerUp.Paddle_Grab(row,col)
 
-
     config.my_powerups.append(powerup)
 
 
+def reset():
     
+    #CREATE NEW BALL:
+    for my_ball in config.balls:
+        my_ball.clear()
+        del my_ball
+    
+    config.balls[:] = []
+    new_ball = config.ball.Ball()
+    config.balls.append(new_ball)
+    config.balls[0].show()
 
-        
+    #REMOVE POWERUPS:
 
-        
+    for powerup in config.my_powerups:
+        if(powerup.show_mode == True):
+            powerup.clear()
+
+        if(powerup.activated == True):
+            powerup.deactivate()
+
+        del powerup
+
+    config.my_powerups[:] = []
+
+
+
+
+def print_headers():
+    print(Fore.BLACK + Back.LIGHTCYAN_EX + Style.BRIGHT + "BRICK BREAKER".center(COL)+Style.RESET_ALL)
+    print(Fore.WHITE + Back.LIGHTCYAN_EX + Style.BRIGHT + "               ".center(COL)+Style.RESET_ALL)
+    stats = str("LIVES: "+str(config.LIVES) + "  |  SCORE:" + str(config.SCORE)+"  |  TIME: " + str(config.CURR_TIME) + 's')
+    print(Fore.BLACK + Back.LIGHTCYAN_EX + Style.BRIGHT + stats.center(COL)+Style.RESET_ALL)
+
+
+def print_instructions():
+    print(Fore.LIGHTCYAN_EX)
+    BACK_COLORS.append(Back.RED)
+    pos = 3
+
+    reposition_cursor(pos,120)
+    print('BRICKS : ')
+
+    brick_types = ['BRICK STRENGTH = 1','BRICK STRENGTH = 2','BRICK STRENGTH = 3','UNBREAKABLE BRICK']
+    pos -= 1
+    for i in range(4):
+        pos += 3
+        reposition_cursor(pos,120)
+        for r in range(BRICK_WIDTH):
+            for c in range(BRICK_LENGTH):
+                if(c== 0 or c == BRICK_LENGTH-1):
+                    print(BACK_COLORS[i] + '|',end="" + Back.RESET) 
+                else :
+                    print(BACK_COLORS[i] + '-',end="" + Back.RESET) 
+            if(r == 0):
+                print(str('    ---   ') + brick_types[i])
+            print()
+            reposition_cursor(pos +1,120)
+            
+
+    BACK_COLORS.remove(Back.RED)
+
+    pos += 4
+    reposition_cursor(pos,120)
+    print("CONTROLS : ")
+    pos+=2
+    reposition_cursor(pos,120)
+    pos+=2
+    print('Press \'a\' to move paddle LEFT')
+    reposition_cursor(pos,120)
+    pos+=2
+    print('Press \'d\' to move paddle RIGHT')
+    reposition_cursor(pos,120)
+    pos+=2
+    print('Press \'r\' to release ball from paddle')
+    reposition_cursor(pos,120)
+    pos+=2
+    print('Press \'q\' to quit')
+    reposition_cursor(pos,120)
+
+    pos+= 1
+
+    print("POWERUPS : ")
+    
+    for i in range(6):
+        pos += 2
+        reposition_cursor(pos,120)
+        print(POWERUPS[i],end = "")
+        print(Fore.LIGHTCYAN_EX + str('    ---   ') + powerup_names[i])
+
+    print(Style.RESET_ALL)
+
+
+
+def game_over():
+    os.system('clear')
+
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                                                     ".center(COL))                 
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "  _____                         ____                 ".center(COL))                 
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ " / ____|                       / __ \                ".center(COL))              
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "| |  __  __ _ _ __ ___   ___  | |  | |_   _____ _ __ ".center(COL))
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT +"| | |_ |/ _` | '_ ` _ \ / _ \ | |  | \ \ / / _ \ '__|".center(COL))
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT +"| |__| | (_| | | | | | |  __/ | |__| |\ V /  __/ |   ".center(COL))
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT +" \_____|\__,_|_| |_| |_|\___|  \____/  \_/ \___|_|   ".center(COL))
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                                                     ".center(COL)+Style.RESET_ALL)                 
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                                                     ".center(COL)+Style.RESET_ALL)                 
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                                                     ".center(COL)+Style.RESET_ALL)      

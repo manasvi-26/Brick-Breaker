@@ -10,6 +10,8 @@ import bricks
 import ball
 import powerUp
 
+#DEFINE LIVES
+LIVES = 1
 
 #CREATE BOARD
 my_board = board.Board()
@@ -27,6 +29,8 @@ balls[0].show()
 
 #CREATE BRICKS
 my_bricks = []
+
+BREAKABLE_BRICKS = 0
 for coord in LAYOUT:
     my_brick = bricks.Brick(coord[0],coord[1])
     my_bricks.append(my_brick)
@@ -35,6 +39,9 @@ for brick in my_bricks:
     brick.show()
 
 
-
 #DEFINE POWERUP
 my_powerups = []
+
+START_TIME = 0
+CURR_TIME = 0
+SCORE = 0
