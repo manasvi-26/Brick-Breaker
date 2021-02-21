@@ -51,18 +51,23 @@ class Brick:
                 config.my_board.hidden_grid[self.row + i][self.col+j] = ' ' 
 
     def powerup_check(self):
+        if(self.strength == 0):
+            config.BREAKABLE_BRICKS -= 1
+
         val = random.uniform(0,1)
         if(val < 0.7):
             utility.create_powerup(self.row,self.col+int(BRICK_LENGTH/2))
 
     def break_brick(self,type):
         config.SCORE += 5
+        config.BREAKABLE_BRICKS -= 1
         if(type == 0):
             self.strength -= 1
             if self.strength == 0:
                 self.clear()
                 self.show_mode = False
                 self.powerup_check()
+
 
             if self.strength == 1:
                 self.color = Back.YELLOW
