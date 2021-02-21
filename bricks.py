@@ -50,9 +50,9 @@ class Brick:
                 
                 config.my_board.hidden_grid[self.row + i][self.col+j] = ' ' 
 
-    def powerup_check(self,type):
-        if(type == 1):
-            config.BREAKABLE_BRICKS -= 1
+    def powerup_check(self):
+       
+        config.BREAKABLE_BRICKS -= 1
 
         val = random.uniform(0,1)
         if(val < 0.7):
@@ -65,7 +65,7 @@ class Brick:
             if self.strength == 0:
                 self.clear()
                 self.show_mode = False
-                self.powerup_check(type)
+                self.powerup_check()
 
 
             if self.strength == 1:
@@ -76,10 +76,13 @@ class Brick:
                 self.show()
         
         if(type == 1):
-            self.strength = 0
+        
+            if(self.strength > 0):
+                self.powerup_check()
             self.clear()
+            self.strength = 0
             self.show_mode = False
-            self.powerup_check(type)
+            
 
 
 

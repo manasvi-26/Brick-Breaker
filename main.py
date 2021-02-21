@@ -12,17 +12,18 @@ print_instructions()
 
 while True :
     
-    take_input()
     reposition_cursor(0, 0)
-
-    if(config.BREAKABLE_BRICKS == 0):
-        win()
-        break
 
     config.CURR_TIME = round(time() - config.START_TIME)
 
     print_headers()
     my_board.print_board()
+
+    take_input()
+    if(config.BREAKABLE_BRICKS == 0):
+        win()
+        break
+
 
     #CHECK LIVES REMAINING
     val = False

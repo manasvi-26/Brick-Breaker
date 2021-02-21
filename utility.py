@@ -173,18 +173,15 @@ def print_instructions():
 
 def game_over():
     
-    print(Style.RESET_ALL)
     print(Fore.BLACK + Back.LIGHTCYAN_EX + Style.BRIGHT  +"GAME OVER :(".center(COL)+Style.RESET_ALL)                 
     print()
 
        
 
 def win():
-    print(Style.RESET_ALL)
     print(Fore.BLACK + Back.LIGHTCYAN_EX + Style.BRIGHT +"YOU BEAT 100% OF ALL THE PLAYERS! GOOD JOB".center(COL)+Style.RESET_ALL)                 
     print()
 
 def Quit():
-    print(Style.RESET_ALL)
     print(Fore.BLACK + Back.LIGHTCYAN_EX + Style.BRIGHT + "YOU QUIT :(".center(COL)+Style.RESET_ALL)                 
     print()
