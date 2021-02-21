@@ -16,6 +16,7 @@ while True :
     reposition_cursor(0, 0)
 
     if(BREAKABLE_BRICKS == 0):
+        yay()
         break
 
     config.CURR_TIME = round(time() - config.START_TIME)

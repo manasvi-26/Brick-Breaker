@@ -54,7 +54,6 @@ def take_input():
 def create_powerup(row,col):
 
     val = random.choice([0,1,2,3,4,5])
-    val = 0
     if val == 0:
         powerup = config.powerUp.Ball_Multiplier(row,col)
     
@@ -183,3 +182,16 @@ def game_over():
     print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                                                     ".center(COL)+Style.RESET_ALL)                 
     print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                                                     ".center(COL)+Style.RESET_ALL)                 
     print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                                                     ".center(COL)+Style.RESET_ALL)      
+
+def yay():
+    os.system('clear')
+
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ " __     __                             _ ".center(SCREEN))
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ " \ \   / /                            | |".center(SCREEN))
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "  \ \_/ /_ _  __ _  __ _  __ _ _   _  | |".center(SCREEN))
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "   \   / _` |/ _` |/ _` |/ _` | | | | | |".center(SCREEN))
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "    | | (_| | (_| | (_| | (_| | |_| | |_|".center(SCREEN))
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "    |_|\__,_|\__,_|\__,_|\__,_|\__, | (_)".center(SCREEN)+Style.RESET_ALL)
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                                __/ |    ".center(SCREEN)+Style.RESET_ALL)
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                               |___/     ".center(SCREEN)+Style.RESET_ALL)
+    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                                         ".center(SCREEN)+Style.RESET_ALL)      
