@@ -22,9 +22,9 @@ python3 main.py
 
 ## Rules
 
-**a** - To move left
-**d** - To move right
-**r** - To release Ball
+- **a** - To move left
+- **d** - To move right
+- **r** - To release Ball
 
 ## Features
 - There are 4 types of Bricks of varying strength and color:
