@@ -15,7 +15,7 @@ while True :
     take_input()
     reposition_cursor(0, 0)
 
-    if(BREAKABLE_BRICKS == 0):
+    if(config.BREAKABLE_BRICKS == 0):
         win()
         break
 
