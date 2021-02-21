@@ -11,7 +11,7 @@ import ball
 import powerUp
 
 #DEFINE LIVES
-LIVES = 1
+LIVES = 5
 
 #CREATE BOARD
 my_board = board.Board()
