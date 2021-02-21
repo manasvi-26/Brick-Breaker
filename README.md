@@ -40,4 +40,4 @@ python3 main.py
 
 - **Encapsulation** - Every component on the board is an object of a class. This instantiation encapsulates the methods and attributes of the objects.
 
-- **Abstraction** -  The functions like `break_brick()` , `move()`, `collide` hide the inner details of the function enabling users to use just the function name. 
+- **Abstraction** -  The functions like `break_brick()` , `move()`, `collide()` hide the inner details of the function enabling users to use just the function name. 
