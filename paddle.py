@@ -15,7 +15,9 @@ class Paddle:
 
 
     def show(self):
-
+        diff = self._len + self.col - (COL - 2)
+        if(diff >= 0):
+            self.col -= (diff)
         for i in range(self._len):
             config.my_board.grid[self.row][self.col + i] = self._color + PADDLE
             config.my_board.hidden_grid[self.row][self.col + i] = 'P'

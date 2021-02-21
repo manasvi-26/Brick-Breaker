@@ -16,7 +16,7 @@ while True :
     reposition_cursor(0, 0)
 
     if(BREAKABLE_BRICKS == 0):
-        yay()
+        win()
         break
 
     config.CURR_TIME = round(time() - config.START_TIME)
@@ -43,7 +43,7 @@ while True :
         if(my_ball.dead == True):
             my_ball.clear()
             balls.remove(my_ball)
-            del my_ball
+            
 
         elif(my_ball.on_paddle == False and my_ball.dead == False):
             my_ball.move()

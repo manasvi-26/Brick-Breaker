@@ -14,7 +14,7 @@ def take_input():
     ch = getChar(getch)
 
     if ch == 'q':
-        print("AW you quit:(")
+        Quit()
         os.system("stty echo")
         exit()
 
@@ -82,10 +82,7 @@ def reset():
         my_ball.clear()
         del my_ball
     
-    config.balls[:] = []
-    new_ball = config.ball.Ball()
-    config.balls.append(new_ball)
-    config.balls[0].show()
+    
 
     #REMOVE POWERUPS:
 
@@ -99,6 +96,11 @@ def reset():
         del powerup
 
     config.my_powerups[:] = []
+
+    config.balls[:] = []
+    new_ball = config.ball.Ball()
+    config.balls.append(new_ball)
+    config.balls[0].show()
 
 
 
@@ -170,28 +172,19 @@ def print_instructions():
 
 
 def game_over():
-    os.system('clear')
+    
+    print(Style.RESET_ALL)
+    print(Fore.BLACK + Back.LIGHTCYAN_EX + Style.BRIGHT  +"GAME OVER :(".center(COL)+Style.RESET_ALL)                 
+    print()
 
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                                                     ".center(COL))                 
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "  _____                         ____                 ".center(COL))                 
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ " / ____|                       / __ \                ".center(COL))              
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "| |  __  __ _ _ __ ___   ___  | |  | |_   _____ _ __ ".center(COL))
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT +"| | |_ |/ _` | '_ ` _ \ / _ \ | |  | \ \ / / _ \ '__|".center(COL))
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT +"| |__| | (_| | | | | | |  __/ | |__| |\ V /  __/ |   ".center(COL))
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT +" \_____|\__,_|_| |_| |_|\___|  \____/  \_/ \___|_|   ".center(COL))
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                                                     ".center(COL)+Style.RESET_ALL)                 
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                                                     ".center(COL)+Style.RESET_ALL)                 
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                                                     ".center(COL)+Style.RESET_ALL)      
+       
 
-def yay():
-    os.system('clear')
+def win():
+    print(Style.RESET_ALL)
+    print(Fore.BLACK + Back.LIGHTCYAN_EX + Style.BRIGHT +"YOU BEAT 100% OF ALL THE PLAYERS! GOOD JOB".center(COL)+Style.RESET_ALL)                 
+    print()
 
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ " __     __                             _ ".center(SCREEN))
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ " \ \   / /                            | |".center(SCREEN))
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "  \ \_/ /_ _  __ _  __ _  __ _ _   _  | |".center(SCREEN))
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "   \   / _` |/ _` |/ _` |/ _` | | | | | |".center(SCREEN))
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "    | | (_| | (_| | (_| | (_| | |_| | |_|".center(SCREEN))
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "    |_|\__,_|\__,_|\__,_|\__,_|\__, | (_)".center(SCREEN)+Style.RESET_ALL)
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                                __/ |    ".center(SCREEN)+Style.RESET_ALL)
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                               |___/     ".center(SCREEN)+Style.RESET_ALL)
-    print(Fore.LIGHTCYAN_EX + Style.BRIGHT+ "                                         ".center(SCREEN)+Style.RESET_ALL)      
+def Quit():
+    print(Style.RESET_ALL)
+    print(Fore.BLACK + Back.LIGHTCYAN_EX + Style.BRIGHT + "YOU QUIT :(".center(COL)+Style.RESET_ALL)                 
+    print()
