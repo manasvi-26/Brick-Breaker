@@ -2,6 +2,7 @@ from headers import *
 import config
 import utility
 
+
 class Brick:
 
     def __init__(self,row,col):
@@ -46,9 +47,18 @@ class Brick:
         for i in range(BRICK_WIDTH):
             for j in range(BRICK_LENGTH):
                 
-                config.my_board.grid[self.row + i][self.col+j] = self._reset
-                
+                config.my_board.grid[self.row + i][self.col+j] = self._reset       
                 config.my_board.hidden_grid[self.row + i][self.col+j] = ' ' 
+
+
+    def move(self):
+
+        clear()
+        self.col = self.col - 1
+        show()
+
+
+
 
     def powerup_check(self):
        

@@ -176,8 +176,6 @@ def game_over():
     print(Fore.BLACK + Back.LIGHTCYAN_EX + Style.BRIGHT  +"GAME OVER :(".center(COL)+Style.RESET_ALL)                 
     print()
 
-       
-
 def win():
     print(Fore.BLACK + Back.LIGHTCYAN_EX + Style.BRIGHT +"YOU WON !!!GOOD JOB".center(COL)+Style.RESET_ALL)                 
     print()

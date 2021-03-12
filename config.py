@@ -13,6 +13,9 @@ import powerUp
 #DEFINE LIVES
 LIVES = 5
 
+#DEFINE LEVELS
+LEVEL = 1
+
 #CREATE BOARD
 my_board = board.Board()
 
@@ -29,6 +32,7 @@ balls[0].show()
 
 #CREATE BRICKS
 my_bricks = []
+LAYOUT = LAYOUT1
 
 BREAKABLE_BRICKS = 0
 for coord in LAYOUT:
