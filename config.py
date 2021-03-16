@@ -31,16 +31,24 @@ balls[0].show()
 
 
 #CREATE BRICKS
-my_bricks = []
-LAYOUT = LAYOUT1
 
 BREAKABLE_BRICKS = 0
-for coord in LAYOUT:
-    my_brick = bricks.Brick(coord[0],coord[1])
-    my_bricks.append(my_brick)
 
-for brick in my_bricks:
-    brick.show()
+def create_bricks(LAYOUT):
+    my_bricks = []
+    
+    for coord in LAYOUT:
+        my_brick = bricks.Brick(coord[0],coord[1])
+        my_bricks.append(my_brick)
+
+    for brick in my_bricks:
+        brick.show()
+
+    return my_bricks
+
+my_bricks = create_bricks(LAYOUT1)
+
+
 
 
 #DEFINE POWERUP

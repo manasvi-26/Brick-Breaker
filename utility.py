@@ -49,6 +49,9 @@ def take_input():
             if(my_ball.on_paddle == True):
                 my_ball.release()
 
+    if ch == 'l':
+        level_change()
+
 
 
 def create_powerup(row,col):
@@ -77,6 +80,8 @@ def create_powerup(row,col):
 
 def reset():
     
+    config.my_paddle.reset()
+
     #CREATE NEW BALL:
     for my_ball in config.balls:
         my_ball.clear()
@@ -108,7 +113,7 @@ def reset():
 def print_headers():
     print(Fore.BLACK + Back.LIGHTCYAN_EX + Style.BRIGHT + "BRICK BREAKER".center(COL)+Style.RESET_ALL)
     print(Fore.WHITE + Back.LIGHTCYAN_EX + Style.BRIGHT + "               ".center(COL)+Style.RESET_ALL)
-    stats = str("LIVES: "+str(config.LIVES) + "  |  SCORE:" + str(config.SCORE)+"  |  TIME: " + str(config.CURR_TIME) + 's')
+    stats = str("LEVEL: " + str(config.LEVEL) + "  |  LIVES: "+str(config.LIVES) + "  |  SCORE:" + str(config.SCORE)+"  |  TIME: " + str(config.CURR_TIME) + 's')
     print(Fore.BLACK + Back.LIGHTCYAN_EX + Style.BRIGHT + stats.center(COL)+Style.RESET_ALL)
 
 
@@ -183,3 +188,16 @@ def win():
 def Quit():
     print(Fore.BLACK + Back.LIGHTCYAN_EX + Style.BRIGHT + "YOU QUIT :(".center(COL)+Style.RESET_ALL)                 
     print()
+
+
+def level_change():
+    config.START_TIME = time()
+    config.my_board.create_board()
+
+    if(config.LEVEL == 1):
+        config.LEVEL += 1
+        config.LAYOUT = LAYOUT2
+        reset()
+        config.my_bricks = config.create_bricks(config.LAYOUT)
+
+

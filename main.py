@@ -21,7 +21,7 @@ while True :
 
     take_input()
     if(config.BREAKABLE_BRICKS == 0):
-        win()
+        level_change()
         break
 
 

@@ -22,7 +22,11 @@ class Paddle:
             config.my_board.grid[self.row][self.col + i] = self._color + PADDLE
             config.my_board.hidden_grid[self.row][self.col + i] = 'P'
 
-
+    def reset(self):
+        self._len = config.PADDLE_LEN
+        self.row = PADDLE_HT
+        self.col = int((COL - 1 - self._len)/2)
+        self.show()
             
     def clear(self):
 

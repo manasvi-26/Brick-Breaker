@@ -60,4 +60,4 @@ powerup_names = ['Expand Paddle','Shrink Paddle', 'Ball Multiplier', 'Fast Ball'
 
 
 POWERUP_TIME = 10
-
+BRICK_FALLING = 20
